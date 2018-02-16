@@ -24,13 +24,13 @@ public class RPN {
 		for (int i = 0; i < commando.length(); i++) {
 			// si es un digito
 			char comando=commando.charAt(i); //pasamos comando en vez de pasar commando.charat(i)
-			if (Character.isDigit(comando)) {
+			if (Character.isDigit(commando.charAt(i))) {
 				double numero;
 				// obtener un string a partir del numero
 				String temp = "";
 				for (j = 0; (j < 100)
-						&& (Character.isDigit(comando) || (comando == '.')); j++, i++) {
-					temp = temp + String.valueOf(comando);
+						&& (Character.isDigit(commando.charAt(i)) || (commando.charAt(i) == '.')); j++, i++) {
+					temp = temp + String.valueOf(commando.charAt(i));
 				}
 				// convertir a double y añadir a la pila
 				numero = Double.parseDouble(temp);
