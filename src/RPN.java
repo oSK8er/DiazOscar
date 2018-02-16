@@ -23,30 +23,45 @@ public class RPN {
 		int j;
 		for (int i = 0; i < commando.length(); i++) {
 			// si es un digito
-			if (Character.isDigit(commando.charAt(i))) {
+			char comando=commando.charAt(i); //pasamos comando en vez de pasar commando.charat(i)
+			if (Character.isDigit(comando)) {
 				double numero;
 				// obtener un string a partir del numero
 				String temp = "";
 				for (j = 0; (j < 100)
-						&& (Character.isDigit(commando.charAt(i)) || (commando.charAt(i) == '.')); j++, i++) {
-					temp = temp + String.valueOf(commando.charAt(i));
+						&& (Character.isDigit(comando) || (comando == '.')); j++, i++) {
+					temp = temp + String.valueOf(comando);
 				}
 				// convertir a double y añadir a la pila
 				numero = Double.parseDouble(temp);
 				pushPila(numero);
-			} else if (commando.charAt(i) == '+') {
-				sumaComando();
-			} else if (commando.charAt(i) == '-') {
-				restaComando();
-			} else if (commando.charAt(i) == '*') {
-				multiplicaComando();
-			} else if (commando.charAt(i) == '/') {
-				divideComando();
-			} else if (commando.charAt(i) == '^') {
-				potenciaComando();
-			} else if (commando.charAt(i) == '%') {
-				restoComando();
-			} else if (commando.charAt(i) != ' ') {
+			}
+
+			else if (comando == '+') {
+				b = popPila();
+				a = popPila();
+				pushPila(a + b);
+			} else if (comando == '-') {
+				b = popPila();
+				a = popPila();
+				pushPila(a - b);
+			} else if (comando == '*') {
+				b = popPila();
+				a = popPila();
+				pushPila(a * b);
+			} else if (comando == '/') {
+				b = popPila();
+				a = popPila();
+				pushPila(a / b);
+			} else if (comando == '^') {
+				b = popPila();
+				a = popPila();
+				pushPila(Math.pow(a, b));
+			} else if (comando == '%') {
+				b = popPila();
+				a = popPila();
+				pushPila(a % b);
+			} else if (comando != ' ') {
 				throw new IllegalArgumentException();
 			}
 		}
@@ -55,54 +70,6 @@ public class RPN {
 			throw new IllegalArgumentException();
 		}
 		return val;
-	}
-
-	private void restoComando() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
-		pushPila(a % b);
-	}
-
-	private void potenciaComando() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
-		pushPila(Math.pow(a, b));
-	}
-
-	private void divideComando() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
-		pushPila(a / b);
-	}
-
-	private void multiplicaComando() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
-		pushPila(a * b);
-	}
-
-	private void restaComando() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
-		pushPila(a - b);
-	}
-
-	private void sumaComando() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
-		pushPila(a + b);
 	}
 
 }
