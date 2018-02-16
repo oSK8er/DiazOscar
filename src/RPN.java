@@ -4,6 +4,9 @@ public class RPN {
 		arriba = nuevo_nodo;
 	}
 
+	private String commando;
+	private NodoPila arriba;
+
 	public double popPila() {
 		double dato_arriba = arriba.dato;
 		arriba = arriba.abajo;
@@ -32,29 +35,17 @@ public class RPN {
 				numero = Double.parseDouble(temp);
 				pushPila(numero);
 			} else if (commando.charAt(i) == '+') {
-				b = popPila();
-				a = popPila();
-				pushPila(a + b);
+				sumaComando();
 			} else if (commando.charAt(i) == '-') {
-				b = popPila();
-				a = popPila();
-				pushPila(a - b);
+				restaComando();
 			} else if (commando.charAt(i) == '*') {
-				b = popPila();
-				a = popPila();
-				pushPila(a * b);
+				multiplicaComando();
 			} else if (commando.charAt(i) == '/') {
-				b = popPila();
-				a = popPila();
-				pushPila(a / b);
+				divideComando();
 			} else if (commando.charAt(i) == '^') {
-				b = popPila();
-				a = popPila();
-				pushPila(Math.pow(a, b));
+				potenciaComando();
 			} else if (commando.charAt(i) == '%') {
-				b = popPila();
-				a = popPila();
-				pushPila(a % b);
+				restoComando();
 			} else if (commando.charAt(i) != ' ') {
 				throw new IllegalArgumentException();
 			}
@@ -66,6 +57,52 @@ public class RPN {
 		return val;
 	}
 
-	private String commando;
-	private NodoPila arriba;
+	private void restoComando() {
+		double a;
+		double b;
+		b = popPila();
+		a = popPila();
+		pushPila(a % b);
+	}
+
+	private void potenciaComando() {
+		double a;
+		double b;
+		b = popPila();
+		a = popPila();
+		pushPila(Math.pow(a, b));
+	}
+
+	private void divideComando() {
+		double a;
+		double b;
+		b = popPila();
+		a = popPila();
+		pushPila(a / b);
+	}
+
+	private void multiplicaComando() {
+		double a;
+		double b;
+		b = popPila();
+		a = popPila();
+		pushPila(a * b);
+	}
+
+	private void restaComando() {
+		double a;
+		double b;
+		b = popPila();
+		a = popPila();
+		pushPila(a - b);
+	}
+
+	private void sumaComando() {
+		double a;
+		double b;
+		b = popPila();
+		a = popPila();
+		pushPila(a + b);
+	}
+
 }
