@@ -37,6 +37,7 @@ public class RPN {
 				pushPila(numero);
 			}
 
+			
 			else if (comando == '+') {
 				b = popPila();
 				a = popPila();
