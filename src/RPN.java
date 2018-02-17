@@ -58,50 +58,38 @@ public class RPN {
 	}
 
 	private void restoComando() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
+		double b = popPila();
+		double a = popPila();
 		pushPila(a % b);
 	}
 
 	private void potenciaComando() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
+		double b = popPila();
+		double a = popPila();
 		pushPila(Math.pow(a, b));
 	}
 
 	private void divideComando() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
+		double b = popPila();
+		double a = popPila();
 		pushPila(a / b);
 	}
 
 	private void multiplicaComando() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
+		double b = popPila();
+		double a = popPila();
 		pushPila(a * b);
 	}
 
 	private void restaComando() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
+		double b = popPila();
+		double a = popPila();
 		pushPila(a - b);
 	}
 
 	private void sumaComando() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
+		double b = popPila();
+		double a = popPila();
 		pushPila(a + b);
 	}
 
