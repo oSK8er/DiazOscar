@@ -1,12 +1,10 @@
 public class RPN {
-
 	private String commando;
 	private NodoPila arriba;
 	public void pushPila(double nuevo_dato) {
 		NodoPila nuevo_nodo = new NodoPila(nuevo_dato, arriba);
 		arriba = nuevo_nodo;
 	}
-
 	public double popPila() {
 		double dato_arriba = arriba.dato;
 		arriba = arriba.abajo;
@@ -35,29 +33,17 @@ public class RPN {
 				numero = Double.parseDouble(temp);
 				pushPila(numero);
 			} else if (commando.charAt(i) == '+') {
-				b = popPila();
-				a = popPila();
-				pushPila(a + b);
+				sumaComando();
 			} else if (commando.charAt(i) == '-') {
-				b = popPila();
-				a = popPila();
-				pushPila(a - b);
+				restaComando();
 			} else if (commando.charAt(i) == '*') {
-				b = popPila();
-				a = popPila();
-				pushPila(a * b);
+				multiplicaComando();
 			} else if (commando.charAt(i) == '/') {
-				b = popPila();
-				a = popPila();
-				pushPila(a / b);
+				divideComando();
 			} else if (commando.charAt(i) == '^') {
-				b = popPila();
-				a = popPila();
-				pushPila(Math.pow(a, b));
+				potenciaComando();
 			} else if (commando.charAt(i) == '%') {
-				b = popPila();
-				a = popPila();
-				pushPila(a % b);
+				restoComando();
 			} else if (commando.charAt(i) != ' ') {
 				throw new IllegalArgumentException();
 			}
@@ -67,5 +53,43 @@ public class RPN {
 			throw new IllegalArgumentException();
 		}
 		return val;
+
 	}
+
+	private void restoComando() {
+		double b = popPila();
+		double a = popPila();
+		pushPila(a % b);
+	}
+
+	private void potenciaComando() {
+		double b = popPila();
+		double a = popPila();
+		pushPila(Math.pow(a, b));
+	}
+
+	private void divideComando() {
+		double b = popPila();
+		double a = popPila();
+		pushPila(a / b);
+	}
+
+	private void multiplicaComando() {
+		double b = popPila();
+		double a = popPila();
+		pushPila(a * b);
+	}
+
+	private void restaComando() {
+		double b = popPila();
+		double a = popPila();
+		pushPila(a - b);
+	}
+
+	private void sumaComando() {
+		double b = popPila();
+		double a = popPila();
+		pushPila(a + b);
+	}
+
 }

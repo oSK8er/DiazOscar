@@ -1,4 +1,5 @@
 
+
 class NodoPila {
 	public NodoPila abajo;
 	public double dato;
@@ -6,5 +7,4 @@ class NodoPila {
 		this.dato = dato;
 		this.abajo = abajo;
 	}
-
 }
