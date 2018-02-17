@@ -17,7 +17,6 @@ public class RPN {
 	}
 
 	public double resultado() {
-		double a, b;
 		int j;
 		for (int i = 0; i < commando.length(); i++) {
 			// si es un digito
@@ -53,7 +52,7 @@ public class RPN {
 			throw new IllegalArgumentException();
 		}
 		return val;
-
+		
 	}
 
 	private void restoComando() {
