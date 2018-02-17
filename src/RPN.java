@@ -68,5 +68,4 @@ public class RPN {
 		}
 		return val;
 	}
-
 }
